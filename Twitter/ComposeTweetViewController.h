@@ -10,4 +10,6 @@
 
 @interface ComposeTweetViewController : UIViewController
 
+- (id) initWithReplyToScreenNames:(NSArray *)screennames;
+
 @end
