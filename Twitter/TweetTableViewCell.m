@@ -9,6 +9,7 @@
 #import "TweetTableViewCell.h"
 #import "ComposeTweetViewController.h"
 #import "TwitterClient.h"
+#import "UserProfileViewController.h"
 
 @interface TweetTableViewCell()
 - (IBAction)onReplyButtonTap:(id)sender;
@@ -19,6 +20,20 @@
 
 @implementation TweetTableViewCell
 
+//- (id)init {
+//    self = [super init];
+//    
+//    if (self != nil) {
+//        [self.profileImageView setUserInteractionEnabled:YES];
+//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onUserProfileImageTap)];
+//        [tap setNumberOfTouchesRequired:1];
+//        [tap setNumberOfTapsRequired:1];
+//        [self.profileImageView addGestureRecognizer:tap];
+//    }
+//    
+//    return self;
+//}
+
 - (void)awakeFromNib {
     // Initialization code
     
@@ -26,15 +41,15 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
 - (IBAction)onReplyButtonTap:(id)sender {
     
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:[[ComposeTweetViewController alloc] initWithReplyToScreenNames:self.replyToScreenNames]];
-        
-    [self.tweetsViewController presentViewController:navi animated:YES completion:nil];
+    
+    [self.previousViewController presentViewController:navi animated:YES completion:nil];
     
 }
 
@@ -53,4 +68,12 @@
         }];
     }
 }
+- (IBAction)onUserProfileImageTap:(id)sender {
+    NSLog(@"Tap Tap");
+    
+    UserProfileViewController *profileController = [[UserProfileViewController alloc] initWithUser:self.user];
+    
+    [self.previousViewController pushViewController:profileController animated:YES];
+}
+
 @end

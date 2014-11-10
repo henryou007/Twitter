@@ -12,7 +12,7 @@
 
 @interface TweetDetailViewController : UIViewController
 
-@property (weak, nonatomic) TweetsViewController *tweetsViewController;
+@property (weak, nonatomic) UINavigationController *previousViewController;
 
 - (id)initWithTweet:(Tweet *)tweet;
 

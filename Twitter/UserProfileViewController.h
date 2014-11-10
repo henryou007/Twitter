@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
 @interface UserProfileViewController : UIViewController
 
+- (id)initWithUser: (User *) user;
 @end

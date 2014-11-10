@@ -51,7 +51,7 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"MM/dd/yyyy, HH:mm a";
     self.timestampLabel.text = [formatter stringFromDate:self.tweet.createdAt];
-    self.tweetFavoriteStatsLabel.text = [NSString stringWithFormat:@"%ld RETWEETS   %ld FAVORITES", self.tweet.retweetCount, self.tweet.favoriteCount];
+    self.tweetFavoriteStatsLabel.text = [NSString stringWithFormat:@"%ld RETWEETS   %ld FAVORITES", (long)self.tweet.retweetCount, self.tweet.favoriteCount];
     
     if (self.tweet.retweeted) {
         [self.retweetButton setImage:[UIImage imageNamed:@"retweet_on"] forState:UIControlStateNormal];
@@ -85,7 +85,7 @@
 - (IBAction)onReplyButtonTap:(id)sender {
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:[[ComposeTweetViewController alloc] initWithReplyToScreenNames:self.tweet.inReplyToScreenName]];
     
-    [self.tweetsViewController presentViewController:navi animated:YES completion:nil];
+    [self.previousViewController presentViewController:navi animated:YES completion:nil];
     
 }
 

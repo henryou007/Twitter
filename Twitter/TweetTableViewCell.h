@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Tweet.h"
 #import "TweetsViewController.h"
+#import "User.h"
 
 @interface TweetTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
@@ -20,10 +21,12 @@
 @property (weak, nonatomic) IBOutlet UIButton *retweetButton;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 
-@property (weak, nonatomic) TweetsViewController *tweetsViewController;
+@property (weak, nonatomic) UINavigationController *previousViewController;
 @property (weak, nonatomic) NSArray *replyToScreenNames;
 @property (strong, nonatomic) NSString *tweetID;
 @property bool isRetweeted;
 @property bool isFavorite;
+
+@property (strong, nonatomic) User *user;
 
 @end

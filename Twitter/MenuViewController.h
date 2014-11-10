@@ -6,8 +6,13 @@
 //  Copyright (c) 2014 Henryyou. All rights reserved.
 //
 
+
+#import "MainViewController.h"
 #import <UIKit/UIKit.h>
 
 @interface MenuViewController : UIViewController
 
+- (id) initWithMainViewController: (MainViewController *) mainViewController;
+
 @end
+

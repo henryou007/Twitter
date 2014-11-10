@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "User.h"
 
 @interface UserHeaderTableViewCell : UITableViewCell
+
+- (void)setUserHeaderwithUser:(User *)user;
 
 @end

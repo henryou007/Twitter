@@ -28,8 +28,6 @@
     self = [super init];
     NSMutableArray *editedScreennames = [NSMutableArray array];
     
-    NSLog(@"ttttttttt %@", screennames);
-    
     if (self != nil) {
         for (NSString *screenname in screennames) {
             [editedScreennames addObject:[NSString stringWithFormat:@"@%@ ", screenname]];

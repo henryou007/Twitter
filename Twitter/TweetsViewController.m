@@ -51,10 +51,15 @@
     [self loadTweets];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self loadTweets];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    TweetTableViewCell *cell = [self.tweetsTableView dequeueReusableCellWithIdentifier:@"TweetTableViewCell"];
+    TweetTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetTableViewCell"];
     
     Tweet *tweet = self.allTweets[indexPath.row];
+    cell.user = tweet.user;
     cell.usernameLabel.text = tweet.user.name;
     cell.screenNameLabel.text = [NSString stringWithFormat:@"@%@", tweet.user.screenname];
     
@@ -78,7 +83,7 @@
    
     cell.replyToScreenNames = tweet.inReplyToScreenName;
     cell.tweetID = tweet.tweetID;
-    cell.tweetsViewController = self;
+    cell.previousViewController = self.navigationController;
     cell.isRetweeted = tweet.retweeted;
     cell.isFavorite = tweet.favorited;
     
@@ -90,12 +95,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:indexPath];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     Tweet *tweet = self.allTweets[indexPath.row];
     
     TweetDetailViewController *dvc = [[TweetDetailViewController alloc] initWithTweet:tweet];
-    dvc.tweetsViewController = self;
+    dvc.previousViewController = self.navigationController;
     [self.navigationController pushViewController:dvc animated:YES];
 }
 

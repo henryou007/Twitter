@@ -10,4 +10,8 @@
 
 @interface MainViewController : UIViewController
 
+- (void) presentHomeTimeline;
+
+- (void) presentProfile;
+
 @end
